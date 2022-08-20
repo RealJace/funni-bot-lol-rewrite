@@ -7,7 +7,7 @@ module.exports = {
 	async execute(interaction) {
 		if (!(interaction instanceof Eris.CommandInteraction)) return;
 
-    interaction.createMessage("",{
+    interaction.createMessage("vote for me on top.gg",{
       components: [
         {
           type: 1,
@@ -16,7 +16,7 @@ module.exports = {
               type: 2,
               style: 5,
               url: "https://top.gg/bot/889926710848540704/vote",
-              label: "vote on top.gg"
+              label: "vote"
             }
           ]
         }
