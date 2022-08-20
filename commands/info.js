@@ -36,8 +36,8 @@ module.exports = {
     }
 
 		interaction.createMessage({
-			embeds = [embed],
-			components = [
+			embeds: [embed],
+			components: [
 		    {
 		      type: 1,
 		      components: [
