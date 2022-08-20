@@ -152,7 +152,7 @@ app.get("/",async (req,res) => {
 	res.send("Bot is working.");
 });
 
-app.listen(3000,() => {
+app.listen(Number(process.env["PORT"]),() => {
 	console.log("Server is running.");
 })
 
