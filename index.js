@@ -10,7 +10,9 @@ const data = require("./data.js")
 
 const app = express();
 
-const client = new Eris(process.env.DISCORD_TOKEN);
+const client = new Eris(process.env.DISCORD_TOKEN,{
+	intents: 32767
+});
 
 var commands = {};
 var commandsArray = [];
