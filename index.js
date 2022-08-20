@@ -148,6 +148,10 @@ client.on("interactionCreate",async interaction => {
 	}
 })
 
+client.on("rawWS",(payload) => {
+	console.log(payload);
+})
+
 app.get("/",async (req,res) => {
 	res.send("Bot is working.");
 });
