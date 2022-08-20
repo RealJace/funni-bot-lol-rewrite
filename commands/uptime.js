@@ -7,6 +7,6 @@ module.exports = {
 	async execute(interaction,client) {
 		if (!(interaction instanceof Eris.CommandInteraction)) return;
 
-    interaction.createMessage(`${(client.uptime / 1000).toString()} seconds`)
+    interaction.createMessage(`${Math.floor(client.uptime / 60000).toString()}m ${Math.floor(client.uptime / 1000).toString()}s`)
 	}
 }
