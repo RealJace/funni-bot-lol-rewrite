@@ -15,22 +15,22 @@ module.exports = {
         {
           name: `in what programming language is fbl written in?`,
           value: `node.js and eris library`,
-          inline: true
+          inline: false
         },
         {
           name: `why should i pick you instead of dank memer?`,
           value: `some dank memer's features are locked behind a paywall, fbl's features are all free and theres optional donation`,
-          inline: true
+          inline: false
         },
         {
           name: `what is this bot?`,
           value: `fun and economy bot`,
-          inline: true
+          inline: false
         },
         {
           name: `why did you pick a name funni bot lol?`,
           value: `since im unoriginal i just smashed words that describe what the bot is about, its funni bot and i just added lol`,
-					inline: true
+					inline: false
         }
       ]
     }
