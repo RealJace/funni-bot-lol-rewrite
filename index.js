@@ -8,7 +8,9 @@ const axios = require("axios");
 
 const data = require("./data.js")
 
-const app = fastify();
+const app = fastify({
+  logger: true
+});
 
 const client = new Eris(process.env.DISCORD_TOKEN,{
 	intents: 32767
@@ -152,7 +154,7 @@ app.get("/",function(req,res) {
 	res.send({
 		state: "Working."
 	});
-});
+})
 
 app.listen({port: Number(process.env["PORT"]),host: "0.0.0.0"},function(err, address) {
 
@@ -161,7 +163,7 @@ app.listen({port: Number(process.env["PORT"]),host: "0.0.0.0"},function(err, add
     return;
   }
 
-	console.log("Server is running.");
+	console.log(`Server is listening on port ${process.env["PORT"]} and on address ${address}`);
 })
 
 client.connect();
