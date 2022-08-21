@@ -71,6 +71,49 @@ client.on("error",(error) => {
 	console.log(error);
 })
 
+client.on("messageCreate",(message) => {
+	if (!(message instanceof Eris.Message)) return;
+
+	if (message.guildID === undefined) return;
+
+	if (!(message.channel instanceof Eris.TextChannel))
+
+	if (message.author.bot) return;
+
+	var oldData = data.get();
+
+	if (message.author.id !== undefined) {
+		if (oldData[message.author.id] === null || oldData[message.author.id] === undefined) {
+			oldData[message.author.id] = {};
+			oldData[message.author.id].cash = 0;
+			oldData[message.author.id].bank = 1000;
+			oldData[message.author.id].level = 1;
+			oldData[message.author.id].xp = 0;
+			oldData[message.author.id].items = [];
+		}
+	}
+
+	oldData[message.author.id].xp += 1;
+
+	if (oldData[message.author.id].xp >= oldData[message.author.id].level * 10) {
+		oldData[message.author.id].level += 1
+		oldData[message.author.id].xp = 0
+
+		message.channel.createMessage({
+			content: `epic, ${message.author.mention} just got to level ${oldData[message.author.id].level.toString()}.`,
+			messageReference: {
+				channelID: message.channel.id,
+				failIfNotExists: false,
+				guildID: message.guildID,
+				messageID: message.id
+			}
+		})
+	}
+
+	data.set(oldData);
+
+})
+
 client.on("interactionCreate",async interaction => {
 	if (interaction instanceof Eris.CommandInteraction) {
 
@@ -83,6 +126,8 @@ client.on("interactionCreate",async interaction => {
 				oldData[interaction.member.id] = {};
 				oldData[interaction.member.id].cash = 0;
 				oldData[interaction.member.id].bank = 1000;
+				oldData[interaction.member.id].level = 1;
+				oldData[interaction.member.id].xp = 0;
 				oldData[interaction.member.id].items = [];
 			}
 		}
