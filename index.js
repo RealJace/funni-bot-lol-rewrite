@@ -149,10 +149,12 @@ client.on("interactionCreate",async interaction => {
 })
 
 app.get("/",function(req,res) {
-	res.send("Bot is working.");
+	res.send({
+		state: "Working."
+	});
 });
 
-app.listen({port: Number(process.env["PORT"])},function(err, address) {
+app.listen({port: Number(process.env["PORT"]),host: "0.0.0.0"},function(err, address) {
 
 	if (err) {
     console.log(err);
