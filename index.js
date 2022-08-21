@@ -3,12 +3,12 @@ require("dotenv").config()
 const path = require("path");
 const fs = require("fs")
 const Eris = require("eris");
-const express = require("express");
+const fastify = require("fastify");
 const axios = require("axios");
 
 const data = require("./data.js")
 
-const app = express();
+const app = fastify();
 
 const client = new Eris(process.env.DISCORD_TOKEN,{
 	intents: 32767
@@ -152,7 +152,7 @@ app.get("/",async (req,res) => {
 	res.send("Bot is working.");
 });
 
-app.listen(Number(process.env["PORT"]),() => {
+app.listen({port: Number(process.env["PORT"])},() => {
 	console.log("Server is running.");
 })
 
