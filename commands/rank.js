@@ -15,19 +15,18 @@ module.exports = {
 		rank.setAvatar(interaction.member.user.dynamicAvatarURL("png"));
 		rank.setCurrentXP(userData.xp);
 		rank.setRequiredXP(userData.level * 10);
-		rank.setStatus("dnd");
 		rank.setProgressBar("#FFFFFF", "COLOR");
 		rank.setUsername(interaction.member.user.username);
     rank.setDiscriminator(interaction.member.user.discriminator);
 
-		rank.build().then(data => {
-			interaction.createMessage("",[
-				{
-					name: "rankcard.png",
-					file: data
-				}
-			]);
-		});
+		const rankCardData = await rank.build();
+
+		interaction.createMessage("",[
+			{
+				name: "rankcard.png",
+				file: rankCardData
+			}
+		])
 
 	}
 }
