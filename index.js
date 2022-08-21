@@ -9,7 +9,7 @@ const axios = require("axios");
 const data = require("./data.js")
 
 const app = fastify({
-  logger: true
+  logger: false
 });
 
 const client = new Eris(process.env.DISCORD_TOKEN,{
