@@ -148,11 +148,17 @@ client.on("interactionCreate",async interaction => {
 	}
 })
 
-app.get("/",async (req,res) => {
+app.get("/",function(req,res) => {
 	res.send("Bot is working.");
 });
 
-app.listen({port: Number(process.env["PORT"])},() => {
+app.listen({port: Number(process.env["PORT"])},function(err, address) => {
+
+	if (err) {
+    console.log(err);
+    return;
+  }
+
 	console.log("Server is running.");
 })
 
