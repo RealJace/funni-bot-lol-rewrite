@@ -76,7 +76,7 @@ client.on("messageCreate",(message) => {
 
 	if (message.guildID === undefined) return;
 
-	if (!(message.channel instanceof Eris.TextChannel))
+	if (!(message.channel instanceof Eris.TextChannel)) return;
 
 	if (message.author.bot) return;
 
