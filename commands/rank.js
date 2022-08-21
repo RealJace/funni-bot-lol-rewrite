@@ -13,6 +13,7 @@ module.exports = {
 
 		const rank = new canvacord.Rank();
 		rank.setAvatar(interaction.member.user.dynamicAvatarURL("png"));
+		rank.setLevel(userData.level,"LEVEL")
 		rank.setCurrentXP(userData.xp);
 		rank.setRequiredXP(userData.level * 10);
 		rank.setProgressBar("#FFFFFF", "COLOR");
