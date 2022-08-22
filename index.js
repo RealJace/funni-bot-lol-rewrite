@@ -102,7 +102,7 @@ client.on("messageCreate",async (message) => {
     try {
       const dm = await message.author.getDMChannel();
       dm.createMessage({
-  			content: `epic, ${message.author.mention} just got to level ${oldData[message.author.id].level.toString()}.`,
+  			content: `epic, you just got to level ${oldData[message.author.id].level.toString()}.`,
   		})
     } catch (err) {
       console.log(err);
