@@ -99,15 +99,29 @@ client.on("messageCreate",(message) => {
 		oldData[message.author.id].level += 1
 		oldData[message.author.id].xp = 0
 
-		message.channel.createMessage({
-			content: `epic, ${message.author.mention} just got to level ${oldData[message.author.id].level.toString()}.`,
-			messageReference: {
-				channelID: message.channel.id,
-				failIfNotExists: false,
-				guildID: message.guildID,
-				messageID: message.id
-			}
-		})
+    try {
+      const dm = await message.author.getDMChannel();
+      dm.createMessage({
+  			content: `epic, ${message.author.mention} just got to level ${oldData[message.author.id].level.toString()}.`,
+  			messageReference: {
+  				channelID: message.channel.id,
+  				failIfNotExists: false,
+  				guildID: message.guildID,
+  				messageID: message.id
+  			}
+  		})
+    } catch (err) {
+      console.log(err);
+      message.channel.createMessage({
+  			content: `epic, ${message.author.mention} just got to level ${oldData[message.author.id].level.toString()}.`,
+  			messageReference: {
+  				channelID: message.channel.id,
+  				failIfNotExists: false,
+  				guildID: message.guildID,
+  				messageID: message.id
+  			}
+  		})
+    }
 	}
 
 	data.set(oldData);
