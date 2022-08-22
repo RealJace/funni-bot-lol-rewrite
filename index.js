@@ -71,7 +71,7 @@ client.on("error",(error) => {
 	console.log(error);
 })
 
-client.on("messageCreate",(message) => {
+client.on("messageCreate",async (message) => {
 	if (!(message instanceof Eris.Message)) return;
 
 	if (message.guildID === undefined) return;
