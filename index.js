@@ -12,8 +12,9 @@ const app = fastify({
   logger: false
 });
 
-const client = new Eris(process.env.DISCORD_TOKEN,{
-	intents: 32767
+const client = new Eris(`Bot ${process.env.DISCORD_TOKEN}`,{
+	intents: 32767,
+	maxShards: "auto"
 });
 
 var commands = {};
@@ -99,23 +100,23 @@ client.on("messageCreate",async (message) => {
 		oldData[message.author.id].level += 1
 		oldData[message.author.id].xp = 0
 
-    try {
-      const dm = await message.author.getDMChannel();
-      dm.createMessage({
-  			content: `epic, you just got to level ${oldData[message.author.id].level.toString()}.`,
-  		})
-    } catch (err) {
-      console.log(err);
-      message.channel.createMessage({
-  			content: `epic, ${message.author.mention} just got to level ${oldData[message.author.id].level.toString()}.`,
-  			messageReference: {
-  				channelID: message.channel.id,
-  				failIfNotExists: false,
-  				guildID: message.guildID,
-  				messageID: message.id
-  			}
-  		})
-    }
+		try {
+			const dm = await message.author.getDMChannel();
+			await dm.createMessage({
+				content: `epic, you just got to level ${oldData[message.author.id].level.toString()}.`,
+			})
+		} catch (err) {
+			console.log(err);
+			message.channel.createMessage({
+				content: `epic, ${message.author.mention} just got to level ${oldData[message.author.id].level.toString()}.`,
+				messageReference: {
+					channelID: message.channel.id,
+					failIfNotExists: false,
+					guildID: message.guildID,
+					messageID: message.id
+				}
+			})
+		}
 	}
 
 	data.set(oldData);
