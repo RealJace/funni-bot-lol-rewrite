@@ -213,9 +213,9 @@ app.get("/",function(req,res) {
 app.listen({port: Number(process.env["PORT"]),host: "0.0.0.0"},function(err, address) {
 
 	if (err) {
-    console.log(err);
-    return;
-  }
+		console.log(err);
+		return;
+	}
 
 	console.log(`Server is listening on port ${process.env["PORT"]} and on address ${address}`);
 })
