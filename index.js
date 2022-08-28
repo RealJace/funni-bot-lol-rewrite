@@ -58,9 +58,9 @@ client.on("ready",async () => {
 	});
 	}
 
-	setStatus()
+	setStatus();
 
-	setInterval(setStatus,500)
+	setInterval(setStatus,10000);
 
 	if (process.env.GUILD_COMMANDS === "False") {
 		await client.bulkEditCommands(commandsArray);
