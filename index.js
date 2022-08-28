@@ -23,6 +23,11 @@ var commandsArray = [];
 const commandsPath = path.join(__dirname, "commands");
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
+if (!fs.existsSync("./data.json")) {
+	fs.writeFileSync("./data.json","{}");
+	console.log("Sucessfully created data.json");
+}
+
 for (const file of commandFiles) {
 	const filePath = path.join(commandsPath, file);
 	const command = require(filePath);
