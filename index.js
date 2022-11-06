@@ -1,5 +1,23 @@
 require("dotenv").config()
 
+// Add the Firebase products that you want to use
+const { initializeApp } = require("firebase/app");
+const { getAnalytics } = require("firebase/analytics");
+
+const firebaseConfig = {
+	apiKey: "AIzaSyBmt4eHz8S_b1c_W_jxBFBg6it3xmvwr8o",
+	authDomain: "funnibotlol.firebaseapp.com",
+	projectId: "funnibotlol",
+	storageBucket: "funnibotlol.appspot.com",
+	messagingSenderId: "31694657503",
+	appId: "1:31694657503:web:8a5b129e732f316f5e566a",
+	measurementId: "G-M45929YE1F"
+};
+  
+// Initialize Firebase
+const firebaseApp = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
 const path = require("path");
 const fs = require("fs")
 const Eris = require("eris");
@@ -215,7 +233,7 @@ app.get("/",function(req,res) {
 	});
 })
 
-app.listen({port: Number(process.env["PORT"]),host: "0.0.0.0"},function(err, address) {
+app.listen({port: 4000,host: "0.0.0.0"},function(err, address) {
 
 	if (err) {
 		console.log(err);

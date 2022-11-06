@@ -1,3 +1,4 @@
+
 const Eris = require("eris");
 const canvacord = require("canvacord");
 const data = require("../data.js");

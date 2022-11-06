@@ -1,3 +1,4 @@
+
 const Eris = require("eris");
 const data = require("../data.js");
 const fs = require("fs");
